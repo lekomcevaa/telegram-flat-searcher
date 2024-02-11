@@ -1,7 +1,7 @@
 from telethon import TelegramClient, events
 from .database import Database
-from .logger import setup_logger
-from .config import Config
+from .utils.logger import setup_logger
+from .utils.config import Config
 from telethon import events
 from telethon.sessions import StringSession
 
@@ -38,6 +38,7 @@ class TelegramListener:
         api_id = config.get('TELEGRAM_API_ID')
         api_hash = config.get('TELEGRAM_API_HASH')
         self.group_name_or_id = group_name_or_id or config.get('TELEGRAM_GROUP_ID')
+        self.logger.debug(f"Group name or ID: {self.group_name_or_id}")
         session_string = config.get('TELEGRAM_SESSION_STRING', default=None)
 
 
@@ -77,4 +78,3 @@ class TelegramListener:
             message_text (str): The text of the message.
         """
         self.db.save_message(timestamp, sender_id, message_text)
-        print(f'Message from {sender_id} saved.')

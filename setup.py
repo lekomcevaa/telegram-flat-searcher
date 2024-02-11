@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='telegram-flat-searcher',
-    version='0.2',
+    name='telegram_flat_searcher',
+    version='0.3',
     packages=find_packages(),
     install_requires=[
         'mysql-connector-python',
